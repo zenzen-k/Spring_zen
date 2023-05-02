@@ -13,7 +13,7 @@ public class AopMain {
 		
 		mystu.getStudentInfo();
 		System.out.println("=============");
-		mywork.getWorkerInfo();
+		mywork.getWorkerInfo();    
 	}
 
 }
