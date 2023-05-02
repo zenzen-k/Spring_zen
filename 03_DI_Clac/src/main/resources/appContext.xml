@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:c="http://www.springframework.org/schema/c"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<!-- 스프링 컨테이너가 여기 적혀있는 것들을 담당한다.	
+		스프링 컨테이너가 객체생성해주고 값을 넣어주는 ,,
+		이 것을 IOC(Inversion of Control) 라고 한다. (제어의 역전)
+		
+		DI(Dependency Injection)
+		인터페이스
+	-->
+	
+	<!-- 
+	sample2.CalcBeanImpl cbean = new sample2.CalcBeanImpl();
+	cbean.setSu1(); 
+	-->
+	
+	
+	
+	<!-- <bean id="cbean" class="sample2.CalcBeanImpl">
+		<property name="su1">
+			<value type="int">13</value>
+		</property>
+		<property name="su2">
+			<value type="int">4</value>
+		</property>
+	</bean>
+	
+	<bean id="cbean2" class="sample2.CalcBeanImpl">
+		<constructor-arg>
+			<value type="int">13</value>
+		</constructor-arg>
+		<constructor-arg>
+			<value type="int">4</value>
+		</constructor-arg>
+	</bean> -->
+	
+	<!-- p(property) : setter, c(constructor) : 생성자 -->
+	
+	<!-- 아래처럼 네임스페이스를 사용하기 위해서는 위에 import를 해주어야한다. -->
+	<bean id="cbean" class="sample2.CalcBeanImpl" p:su1="13" c:su2="4"/>
+</beans>

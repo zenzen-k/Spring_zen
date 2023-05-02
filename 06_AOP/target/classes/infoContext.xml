@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:c="http://www.springframework.org/schema/c"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.1.xsd">
+	
+	
+	<bean id="myhello" class="com.spring.ex.Hello"/>
+	<bean id="mystart" class="com.spring.ex.Start"/>
+	<bean id="myend" class="com.spring.ex.End"/>
+	<bean id="mygoodbye" class="com.spring.ex.GoodBye"/>
+	
+	<bean id="mystu" class="com.spring.ex.StudentImpl" p:name="조정석" p:age="10" p:gradeNum="3" p:classNum="5"/>
+	<bean id="mywork" class="com.spring.ex.WorkerImpl" c:name="윤아" c:age="35" c:job="개발자"/>
+	
+	<aop:config>
+		<aop:aspect ref="mystart" order="1">
+			<aop:before method="start" pointcut="execution(* com.spring.ex.StudentImpl.*())"/>
+		</aop:aspect>
+	</aop:config>
+	
+	<aop:config>
+		<aop:aspect ref="myhello" order="2">
+			<aop:before method="hello" pointcut="execution(* com.spring.ex.StudentImpl.*())"/>
+		</aop:aspect>
+	</aop:config>
+	
+	<aop:config>
+		<aop:aspect ref="myend">
+			<aop:after method="end" pointcut="execution(* com.spring.ex.StudentImpl.*())"/>
+		</aop:aspect>
+	</aop:config>
+	
+	
+	
+	<aop:config>
+		<aop:aspect ref="mystart">
+			<aop:before method="start" pointcut="execution(* com.spring.ex.WorkerImpl.*())"/>
+		</aop:aspect>
+	</aop:config>
+	
+	<aop:config>
+		<aop:aspect ref="mygoodbye" order="5">
+			<aop:after method="goodbye" pointcut="execution(* com.spring.ex.WorkerImpl.*())"/>
+		</aop:aspect>
+	</aop:config>
+	
+	<aop:config>
+		<aop:aspect ref="myend" order="4">
+			<aop:after method="end" pointcut="execution(* com.spring.ex.WorkerImpl.*())"/>
+		</aop:aspect>
+	</aop:config>
+	
+</beans>

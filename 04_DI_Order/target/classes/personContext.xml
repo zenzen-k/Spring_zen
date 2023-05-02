@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:c="http://www.springframework.org/schema/c"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<!-- 
+	<bean id="p" class="sample3.PersonImpl">
+		<constructor-arg value="김"/>
+		<constructor-arg value="52"/>
+		<constructor-arg value="160.0"/>
+		
+		<constructor-arg><value>김</value></constructor-arg>
+		<constructor-arg><value type="int">52</value></constructor-arg>
+		<constructor-arg><value type="double">160.0</value></constructor-arg>
+	</bean> 
+	-->
+	
+	<!-- 
+	<bean id="s" class="sample3.StudentImpl">
+		<property name="kor">
+			<value type="int">80</value>
+		</property>
+		<property name="eng">
+			<value type="int">90</value>
+		</property>
+		<property name="per">
+			<ref bean="p"/>
+		</property>
+	</bean> 
+	-->
+	
+	<!-- 
+		sample3.MyInfo info = new sample3.MyInfo();
+	 -->
+	<!-- 
+	<bean id="info" class="sample3.MyInfo">
+		<property name="p">setter 이름
+			<ref bean="p"/>위에서 만든 객체 이름
+		</property>
+		<property name="s">
+			<ref bean="s"/>
+		</property>
+	</bean>
+	-->
+	
+	<bean id="p" class="sample3.PersonImpl" c:name="김" c:age="34" c:height="194.3"/>
+	<bean id="s" class="sample3.StudentImpl" p:kor="98" p:eng="84" p:per-ref="p"/>
+	<bean id="info" class="sample3.MyInfo" p:p-ref="p" p:s-ref="s"/>
+</beans>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.1.xsd">
+	
+	<bean id="myorder" class="example3.OrderImpl"/>
+	<bean id="myboard" class="example3.BoardImpl"/>
+	
+	<bean id="mydao" class="example3.Dao"/>
+	<bean id="myhello" class="example3.Hello"/>
+	<bean id="mylogin" class="example3.Login"/>
+	<bean id="mylogout" class="example3.Logout"/>
+	
+	
+	<aop:config>
+		<aop:aspect ref="myhello" order="1">
+			<aop:before method="hello" pointcut="execution(* example3.BoardImpl.*())"/>
+		</aop:aspect>
+	</aop:config>
+
+	<aop:config>
+		<aop:aspect ref="mylogin" order="2">
+			<!-- 리턴타입이 상관없고 example3 패키지의 BoardImpl클래스안에 매개변수가 없는 메서드 호출 -->
+			<!-- 즉, 해당 메서드를 호출하기 전에 mylogin이 관리하는 Login클래스 안의 login메서드를 호출하라는 의미다 -->
+			<aop:before method="login" pointcut="execution(* example3.BoardImpl.*())"/>
+		</aop:aspect>
+	</aop:config>
+	
+	<aop:config>
+		<aop:aspect ref="mydao" order="4">
+			<aop:after method="dao" pointcut="execution(* example3.BoardImpl.*())"/>
+		</aop:aspect>
+	</aop:config>
+	
+	<aop:config>
+		<aop:aspect ref="mylogout" order="3">
+			<aop:after method="logout" pointcut="execution(* example3.BoardImpl.*())"/>
+		</aop:aspect>
+	</aop:config>
+	
+	
+	
+	<aop:config>
+		<aop:aspect ref="mylogin">
+			<aop:before method="login" pointcut="execution(* example3.OrderImpl.*())"/>
+		</aop:aspect>
+	</aop:config>
+	
+	<aop:config>
+		<aop:aspect ref="mydao" order="2">
+			<aop:after method="dao" pointcut="execution(* example3.OrderImpl.*())"/>
+		</aop:aspect>
+	</aop:config>
+	
+	<aop:config>
+		<aop:aspect ref="mylogout" order="1">
+			<aop:after method="logout" pointcut="execution(* example3.OrderImpl.*())"/>
+		</aop:aspect>
+	</aop:config>
+</beans>

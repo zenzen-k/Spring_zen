@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<bean id="odao" class="sample2.OrderDaoImpl"/>
+	<bean id="ddao" class="sample2.DeliveryDaoImpl"/>
+	
+	<bean id="service" class="sample2.ServiceImpl">
+		<property name="odao"><!-- setter -->
+			<ref bean="odao"/><!-- 위 bean의 odao -->
+		</property>
+		<property name="ddao">
+			<ref bean="ddao"/>
+		</property>
+	</bean>
+
+</beans>
