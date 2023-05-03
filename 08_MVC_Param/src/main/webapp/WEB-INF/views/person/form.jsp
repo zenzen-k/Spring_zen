@@ -3,7 +3,7 @@
 person/form 요청 -> /person/form.jsp
 <br>
 
-<form action="<%=request.getContextPath()%>/person/input3" method="get">
+<form action="<%=request.getContextPath()%>/person/input5" method="get">
 	<table border="1">
 		<tr>
 			<td>ID</td>

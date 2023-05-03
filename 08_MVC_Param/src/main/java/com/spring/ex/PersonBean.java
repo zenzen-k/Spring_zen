@@ -7,6 +7,7 @@ public class PersonBean {
 
 	public PersonBean() {
 		super();
+		System.out.println("PersonBean() »ý¼ºÀÚ");
 	}
 
 	public PersonBean(String id, String passwd, String addr) {
@@ -21,6 +22,7 @@ public class PersonBean {
 	}
 
 	public void setId(String id) {
+		System.out.println("setId()");
 		this.id = id;
 	}
 
@@ -29,6 +31,7 @@ public class PersonBean {
 	}
 
 	public void setPasswd(String passwd) {
+		System.out.println("setPasswd()");
 		this.passwd = passwd;
 	}
 
@@ -37,6 +40,7 @@ public class PersonBean {
 	}
 
 	public void setAddr(String addr) {
+		System.out.println("setAddr()");
 		this.addr = addr;
 	}
 

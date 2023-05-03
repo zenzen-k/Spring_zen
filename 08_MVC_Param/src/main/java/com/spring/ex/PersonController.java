@@ -4,6 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -70,5 +71,28 @@ public class PersonController {
 	@RequestMapping("person/input3")
 	public String input3() {
 		return "person/result3";
+	}
+	
+	@RequestMapping("person/input4")
+	public String input4(PersonBean per) {
+		
+//		PersonBean per = new PersonBean();
+//		per.setId(reqeust.getParameter("id"));
+//		per.setPasswd(reqeust.getParameter("passwd"));
+//		per.setAddr(reqeust.getParameter("addr"));
+//		model.addAttribute("personBean", per);
+		// 클래스명과 같지만, 첫글자가 소문자로 변경된것으로 바뀐다.(따라서 jsp 넘어가서는 personBean으로 접근하기)
+//		위의 작업이 자동으로 이루어진다.
+		
+		System.out.println(per.getId());
+		System.out.println(per.getPasswd());
+		System.out.println(per.getAddr());
+		return "person/result4";
+	}
+	
+	@RequestMapping("person/input5")
+	public String input5(@ModelAttribute("abcd") PersonBean per) {
+		//model.addAttribute("personBean", per); 자동으로 됨~~~
+		return "person/result5";
 	}
 }
