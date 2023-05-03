@@ -11,9 +11,9 @@ public class AopMain {
 		Student mystu = (Student)context.getBean("mystu");
 		Worker mywork = (Worker)context.getBean("mywork");
 		
-		mystu.getStudentInfo();
+		mystu.getStudentInfo(); // ÇÙ½É±â´É
 		System.out.println("=============");
-		mywork.getWorkerInfo();    
+		mywork.getWorkerInfo(); // ÇÙ½É±â´É
 	}
 
 }

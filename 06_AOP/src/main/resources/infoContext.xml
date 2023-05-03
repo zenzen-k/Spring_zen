@@ -7,14 +7,20 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.1.xsd">
 	
-	
+	<!-- 공통기능 -->
 	<bean id="myhello" class="com.spring.ex.Hello"/>
 	<bean id="mystart" class="com.spring.ex.Start"/>
 	<bean id="myend" class="com.spring.ex.End"/>
 	<bean id="mygoodbye" class="com.spring.ex.GoodBye"/>
 	
+	<!-- 핵심기능 -->
+	<!-- 에러가 뜨면 setter 메서드가 있는지 우선 확인할 것. -->
 	<bean id="mystu" class="com.spring.ex.StudentImpl" p:name="조정석" p:age="10" p:gradeNum="3" p:classNum="5"/>
+	<!-- <property> -->
+	<!-- 에러가 뜨면 매개변수 3가지를 받는 생성자가 있는지 확인할 것. -->
 	<bean id="mywork" class="com.spring.ex.WorkerImpl" c:name="윤아" c:age="35" c:job="개발자"/>
+	<!-- <construct-arg> -->
+	
 	
 	<aop:config>
 		<aop:aspect ref="mystart" order="1">
