@@ -1,4 +1,6 @@
-package example3;
+package example4;
+
+import org.springframework.stereotype.Component;
 
 public interface Person {
 	public void setName(String name);
