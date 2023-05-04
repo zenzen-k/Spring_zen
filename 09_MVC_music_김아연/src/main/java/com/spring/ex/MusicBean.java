@@ -7,6 +7,7 @@ public class MusicBean {
 
 	public MusicBean() {
 		super();
+		System.out.println("MusicBean()");
 	}
 
 	public MusicBean(String title, String singer, int price) {
@@ -22,6 +23,7 @@ public class MusicBean {
 
 	public void setTitle(String title) {
 		this.title = title;
+		System.out.println("setTitle()");
 	}
 
 	public String getSinger() {
@@ -30,6 +32,7 @@ public class MusicBean {
 
 	public void setSinger(String singer) {
 		this.singer = singer;
+		System.out.println("setSinger()");
 	}
 
 	public int getPrice() {
@@ -38,6 +41,7 @@ public class MusicBean {
 
 	public void setPrice(int price) {
 		this.price = price;
+		System.out.println("setPrice()");
 	}
 
 }

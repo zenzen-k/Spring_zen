@@ -44,7 +44,20 @@ public class MusicController {
 	// input3 -> music/result3.jsp
 	// command 객체로 만들어서 console, result3.jsp 에서 출력
 	@RequestMapping("input3")
-	public String input3(MusicBean mb) {
+	public String input3(MusicBean mb) { //커맨드객체를 쓰려면 매개변수없는 생성자가 반드시 필요하다!
+		
+		/*
+		 * 커맨드 객체에는 다음과 같은 코드가 자동생성된다.
+		MusicBean mb = new MusicBean();
+		String title = request.getParameter("title");
+		String singer = request.getParameter("singer");
+		String price = request.getParameter("price");
+		mb.setTitle(title);
+		mb.setSinger(singer);
+		mb.setPrice(Integer.parseInt(price));
+		model.addAttribute("musicBean", mb);
+		*/
+		
 		System.out.println("title : " + mb.getTitle());
 		System.out.println("singer : " + mb.getSinger());
 		System.out.println("price : " + mb.getPrice());
@@ -59,6 +72,8 @@ public class MusicController {
 		System.out.println("title : " + mb.getTitle());
 		System.out.println("singer : " + mb.getSinger());
 		System.out.println("price : " + mb.getPrice());
+		
+		// model.addAttribute("mb", mb);
 		
 		return "music/result4";
 	}
