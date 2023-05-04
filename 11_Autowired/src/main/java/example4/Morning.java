@@ -2,6 +2,7 @@ package example4;
 
 import org.springframework.stereotype.Component;
 
+// Morning Morning = new Morning();
 @Component("Morning")
 public class Morning implements Car{
 	

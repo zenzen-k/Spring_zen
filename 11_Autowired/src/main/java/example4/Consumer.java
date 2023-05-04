@@ -12,8 +12,8 @@ public class Consumer implements Person {
 	private int age;
 
 	// 구매자동차
-	@Autowired
-	@Qualifier("Sonata")
+	@Autowired 
+	@Qualifier("Morning")
 	private Car car; // sonata, morning객체 들어갈수 있다. car의 자식이니까
 
 	public Consumer() {
