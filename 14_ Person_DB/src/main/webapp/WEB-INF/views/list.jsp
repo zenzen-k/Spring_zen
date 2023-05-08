@@ -18,7 +18,7 @@ list.jsp<br>
 			<td><a href="updateForm?num=${plist.num}">${plist.id}</a></td>
 			<td>${plist.name}</td>
 			<td>${plist.age}</td>
-			<td><a href="delete">삭제</a></td>
+			<td><a href="delete?num=${plist.num}">삭제</a></td>
 		</tr>
 	</c:forEach>
 </table>

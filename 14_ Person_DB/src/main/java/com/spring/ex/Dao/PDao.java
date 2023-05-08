@@ -142,4 +142,22 @@ public class PDao {
 			}
 		}
 	}
+
+	public void deletePerson(String num) {
+		String sql = "delete person where num=" + num;
+		try {
+			ps = conn.prepareStatement(sql);
+			int cnt = ps.executeUpdate();
+			System.out.println("delete cnt : " + cnt);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(ps!=null)
+					ps.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+	}
 }
