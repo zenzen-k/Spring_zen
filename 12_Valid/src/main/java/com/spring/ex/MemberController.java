@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class MemberController {
 	
 	// 요청명은 프로젝트 내에서 절대!!!!중복되면 안됨 ㅇㅇ
-	// 근데 method 구분하는건 ㄱㅊ
+	// 근데 method가 다르면 ㄱㅊ
 	@RequestMapping(value = "form", method = RequestMethod.GET)
 	public String form() {
 		return "form";
@@ -30,7 +30,7 @@ public class MemberController {
 		// result.hasErrors() -> false : 에러발생ㄴㄴ
 		
 		String page = "result"; // 넘어갈 페이지 설정
-		if(result.hasErrors()) { // 참이면 에러발생ㅇㅇ
+		if(result.hasErrors()) { // 에러발생하면 참 ㅇㅇ
 			page = "form";
 		}
 		return page;
