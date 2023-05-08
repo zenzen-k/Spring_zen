@@ -14,6 +14,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.spring.ex.DTO.PDto;
 import com.spring.ex.command.PCommand;
 import com.spring.ex.command.PListCommand;
+import com.spring.ex.command.PUpdateCommand;
 import com.spring.ex.command.PUpdateFormCommand;
 import com.spring.ex.command.PWriteCommand;
 
@@ -74,8 +75,10 @@ public class PController {
 	//
 	@RequestMapping("update")
 	public String update(Model model, HttpServletRequest request) {
+		model.addAttribute("req", request);
+		command = new PUpdateCommand();
+		command.execute(model);
 		
-		
-		return "";
+		return "redirect:/list";
 	}
 }

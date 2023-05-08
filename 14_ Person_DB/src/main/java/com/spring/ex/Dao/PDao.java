@@ -7,6 +7,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import javax.servlet.http.HttpServletRequest;
+
 import com.spring.ex.DTO.PDto;
 
 public class PDao {
@@ -117,5 +119,27 @@ public class PDao {
 			}
 		}
 		return pd;
+	}
+
+	public void updatePerson(HttpServletRequest request) {
+		String sql = "update person set id=?, name=?, age=? where num=?";
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, request.getParameter("id"));
+			ps.setString(2, request.getParameter("name"));
+			ps.setString(3, request.getParameter("age"));
+			ps.setString(4, request.getParameter("num"));
+			int cnt = ps.executeUpdate();
+			System.out.println("update cnt : " + cnt);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(ps!=null)
+					ps.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
 	}
 }
