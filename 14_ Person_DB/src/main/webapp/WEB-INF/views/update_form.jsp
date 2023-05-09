@@ -19,7 +19,7 @@ update_form.jsp<br>
 			<td><input type="text" name="age" value="${pd.age}"></td>
 		</tr>
 		<tr>
-			<td colspan="2"><input type="submit" value="입력"></td>
+			<td colspan="2"><input type="submit" value="수정"></td>
 		</tr>
 	
 	</table>

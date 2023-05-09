@@ -13,10 +13,10 @@ public class PDeleteCommand implements PCommand {
 	@Override
 	public void execute(Model model) {
 		Map<String, Object> map = model.asMap();
-		HttpServletRequest request = (HttpServletRequest)map.get("req");
+		String num = (String)map.get("num");
 		
 		PDao pdao = PDao.getInstance();
-		pdao.deletePerson(request.getParameter("num"));
+		pdao.deletePerson(num);
 	}
 
 }

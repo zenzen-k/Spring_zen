@@ -47,6 +47,8 @@ public class PController {
 		return "redirect:/list"; 
 	}
 	
+	// delete -> list 요청
+	// update -> list 요청
 	// write 컨트롤러 -> list 컨트롤러요청
 	@RequestMapping("list")
 	public String list(Model model) {
@@ -73,7 +75,7 @@ public class PController {
 		return "update_form";
 	}
 	
-	//
+	// updateForm.jsp -> 수정버튼 -> update 요청함
 	@RequestMapping("update")
 	public String update(Model model, HttpServletRequest request) {
 		model.addAttribute("req", request);
@@ -83,9 +85,10 @@ public class PController {
 		return "redirect:/list";
 	}
 	
+	// list.jsp에서 delete 요청
 	@RequestMapping("delete")
 	public String delete(Model model, HttpServletRequest request) {
-		model.addAttribute("req", request);
+		model.addAttribute("num", request.getParameter("num"));
 		command = new PDeleteCommand();
 		command.execute(model);
 		
