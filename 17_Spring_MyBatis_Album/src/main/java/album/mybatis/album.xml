@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- album.xml -->
+<!-- mapper 화일이라고 한다. -->
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+
+<!-- 
+	아까 다오에서 작성했던 GetAlbumList id에 복붙 ㄱㄱ 
+	만들객체는 resultType 에
+	
+	select 태그안에서 select 작업을한다.
+	주의할점!!! ; 세미콜론 절대 작성 ㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴ
+-->
+
+<!-- mapper의 공간 이름은 album.AlbumBean 이며, -->
+<mapper namespace="album.AlbumBean">
+
+	<!-- id가 GetAlbumList 이다. -->
+	<!-- album.model 의 AlbumBean 클래스. 이건 아무거나쓰면 안되고 파일대로 맞춰주어야 한다! -->
+	<select id="GetAlbumList" resultType="album.model.AlbumBean">
+		select * from albums
+		order by num desc
+	
+	</select>
+	
+	<!-- AlbumBean album 이 넘어왔음. 성공적으로 실행(삽입)된 개수가 return 된다. (호출한 Dao로 감) -->
+	<!-- myBatis에서는 #{}을 사용함!! -->
+	<insert id="InsertAlbum">
+		insert into albums(num, title, singer, price, day) 
+		values(albums_seq.nextval, #{title}, #{singer}, #{price}, #{day})
+	</insert>
+	
+	
+	<!-- 성공적인 결과가 리턴이 되지만 이런건 resultType 으러 써주면 에러뜸 안됨! -->
+	<delete id="DeleteAlbum">
+		delete albums where num = #{num}
+	</delete>
+	
+	
+	<!-- 
+	하지만 아래와 같은 sql문들은 반드시 작성해주어야 한다.
+	select count(*) from albums   => resultType="int"
+	select * from albums where num= #{num}
+	 -->
+	<select id="GetAlbumByNum" resultType="album.model.AlbumBean">
+		select * from albums where num= #{num}
+	</select>
+	
+</mapper>
+
+<!-- 
+<mapper namespace="album.AlbumBean"
+상관 ㄴㄴ a.b.c 도 가넝
+
+AlbumBean 객체로 만들고
+-> resultType="album.model.AlbumBean"
+
+알아서 ArrayList로 넣는다.
+ -->

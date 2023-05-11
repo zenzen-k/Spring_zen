@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<!-- Root Context: defines shared resources visible to all other web components -->
+	
+	<!-- 
+	org.apache.commons.dbcp.BasicDataSource dataSource = new org.apache.commons.dbcp.BasicDataSource();
+	dataSource.setDriverClassName("oracle.jdbc.driver.OracleDriver");
+	dataSource.setUrl("jdbc:oracle:thin:@localhost:1521:orcl");
+	dataSource.setUsername("jspid");
+	dataSource.setPassword("jsppw");
+	
+	 -->
+	
+	
+	<!-- 변수이름이 정해져있다. -->
+	
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>
+		<property name="url" value="jdbc:oracle:thin:@localhost:1521:orcl"/>
+		<property name="username" value="jspid"/>
+		<property name="password" value="jsppw"/>	
+	</bean>
+	
+	
+	<!-- 
+	org.mybatis.spring.SqlSessionFactoryBean sqlSessionFactoryBean = new org.mybatis.spring.sqlSessionFactoryBean();
+	sqlSessionFactoryBean.setDataSource(dataSource);
+	sqlSessionFactoryBean.setConfigLocation("classpath:/album/mybatis/SqlMapConfig.xml");
+	sqlSessionFactoryBean.setMapperLocations("classpath:/album/mybatis/album.xml");
+	ref : 객체를 넣을 때 사용하는,,
+	value는 속성으로도 넣을 수 있지만, 자식태그로도 넣을 값을 설정 할 수 있다.
+	
+	org.mybatis.spring.SqlSessionFactoryBean -> dependency 설정했던 mybatis관련 설정에 있다. 
+	 -->
+	 
+	<bean id="sqlSessionFactoryBean" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"/>
+		<property name="configLocation" value="classpath:/album/mybatis/SqlMapConfig.xml"/>
+		<property name="mapperLocations">
+			<value>classpath:/album/mybatis/album.xml</value>
+		</property>
+	</bean>
+	
+	
+	<!-- 
+	org.mybatis.spring.SqlSessionTemplate sqlSessionTemplate 
+	= new org.mybatis.spring.SqlSessionTemplate(sqlSessionFactoryBean);
+	 -->
+	
+	<bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg ref="sqlSessionFactoryBean"/>
+	</bean>
+	
+	<!-- -> 즉, 첫번째 객체는 두번째 객체를 만들기 위해 사용되고,
+	두번째 객체는 세번째 객체를 만들기 위해서 사용이 되고 있다.
+	실제 필요한 것은 세번째 객체다. -->
+	
+</beans>
