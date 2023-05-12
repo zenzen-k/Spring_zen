@@ -12,6 +12,8 @@
 	
 	<!-- view의 위치 -->
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+	<!-- 여기서 오류가 뜨면 위의 패키지 jar 화일을 못가져왔다. > 즉, 디펜던시 설정이 문제가 있다는 의미다. -->
+	
 		<property name="prefix" value="/WEB-INF/album/"></property>
 		<property name="suffix" value=".jsp"></property>
 	</bean>

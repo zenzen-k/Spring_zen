@@ -34,10 +34,10 @@
 	<!-- 여러가지 ab요청 -->
 	<servlet>
 		<servlet-name>album</servlet-name>
-		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class> <!-- DispatcherServlet가 요청을 받고 -->
 		<init-param>
 			<param-name>contextConfigLocation</param-name>
-			<param-value>/WEB-INF/spring/appServlet/album-servlet.xml</param-value>
+			<param-value>/WEB-INF/spring/appServlet/album-servlet.xml</param-value> 
 		</init-param>
 		<load-on-startup>1</load-on-startup>
 	</servlet>

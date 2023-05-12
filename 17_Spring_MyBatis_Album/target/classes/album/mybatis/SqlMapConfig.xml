@@ -7,5 +7,13 @@
   
   
 <configuration>
-
+	<typeAliases>
+		<!-- 별칭설정함 -->
+		<typeAlias type="album.model.AlbumBean" alias="MyAlbum"/>
+		
+		<!--
+		다른게 더있으면 아래 이러헥 추가하면 됨 
+		<typeAlias type="album.model.AlbumBean" alias="MyAlbum"/>
+		 -->
+	</typeAliases>
 </configuration>

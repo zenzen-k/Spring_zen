@@ -41,7 +41,7 @@
 		<property name="configLocation" value="classpath:/album/mybatis/SqlMapConfig.xml"/>
 		<property name="mapperLocations">
 			<value>classpath:/album/mybatis/album.xml</value>
-		</property>
+		</property> <!-- mapper 파일의 위치를 여기에 넣는다. -->
 	</bean>
 	
 	
@@ -54,8 +54,10 @@
 		<constructor-arg ref="sqlSessionFactoryBean"/>
 	</bean>
 	
-	<!-- -> 즉, 첫번째 객체는 두번째 객체를 만들기 위해 사용되고,
+	<!-- 
+	즉, 첫번째 객체는 두번째 객체를 만들기 위해 사용되고,
 	두번째 객체는 세번째 객체를 만들기 위해서 사용이 되고 있다.
-	실제 필요한 것은 세번째 객체다. -->
+	실제 필요한 것은 세번째 객체다. 
+	-->
 	
 </beans>

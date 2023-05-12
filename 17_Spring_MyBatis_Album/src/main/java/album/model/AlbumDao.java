@@ -2,10 +2,15 @@ package album.model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
+import org.apache.ibatis.session.RowBounds;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Component;
+
+import utility.Paging;
 
 
 // AlbumDao myAlbumDao = new AlbumDao();
@@ -26,10 +31,19 @@ public class AlbumDao {
 	
 	
 	// 
-	public List<AlbumBean> getAlbumList(){
+	public List<AlbumBean> getAlbumList(Paging pageInfo , Map<String, String> map){
+		
+		
+		// 페이징 관련
+		RowBounds rowBounds = new RowBounds(pageInfo.getOffset(), pageInfo.getLimit());
+		// new RowBounds(건너뛸 레코드 수, 가져올 레코드 수);
+		
+		System.out.println("offset : " + pageInfo.getOffset());
+		System.out.println("limit : " + pageInfo.getLimit()); // pageSize 몇개 보여줄지
+		
 		
 		List<AlbumBean> lists = new ArrayList<AlbumBean>();
-		lists = sqlSessionTemplate.selectList(namespace + ".GetAlbumList"); // select 에서 ArrayList 로 가져오는 메서드  
+		lists = sqlSessionTemplate.selectList(namespace + ".GetAlbumList", map, rowBounds); // select 에서 ArrayList 로 가져오는 메서드  
 		// album.AlbumBean.GetAlbumList -> namespace + id 마지막에 있는거만 아이디. 즉 아이디는 GetAlbumList
 		// 네임스페이스가 album.AlbumBean 인 매퍼 화일을 찾아간다. (album.xml)
 		
@@ -57,4 +71,24 @@ public class AlbumDao {
 		AlbumBean album = sqlSessionTemplate.selectOne(namespace + ".GetAlbumByNum", num);
 		return album;
 	}
+
+	
+	public int updateAlbum(AlbumBean album) {
+		System.out.println("update 메서드");
+		int cnt = -1;
+		try {
+			cnt = sqlSessionTemplate.update(namespace + ".UpdateAlbum", album);
+			System.out.println("update cnt : " + cnt);
+		}catch (DataAccessException e) {
+			System.out.println("예외발생");
+		}
+		return cnt;
+	}
+
+	// 전체 레코드 수
+	public int getTotalCount(Map<String, String> map) {
+		int totalcount = sqlSessionTemplate.selectOne(namespace + ".GetTotalCount", map);
+		return totalcount;
+	}
+	
 }

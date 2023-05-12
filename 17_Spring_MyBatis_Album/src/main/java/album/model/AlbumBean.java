@@ -36,52 +36,52 @@ public class AlbumBean {
 	}
 
 	public int getNum() {
-		System.out.println("getNum");
+		//System.out.println("getNum");
 		return num;
 	}
 
 	public void setNum(int num) {
-		System.out.println("setNum");
+		//System.out.println("setNum");
 		this.num = num;
 	}
 
 	public String getTitle() {
-		System.out.println("getTitle");
+		//System.out.println("getTitle");
 		return title;
 	}
 
 	public void setTitle(String title) {
-		System.out.println("setTitle");
+		//System.out.println("setTitle");
 		this.title = title;
 	}
 
 	public String getSinger() {
-		System.out.println("getSinger");
+		//System.out.println("getSinger");
 		return singer;
 	}
 
 	public void setSinger(String singer) {
-		System.out.println("setSinger");
+		//System.out.println("setSinger");
 		this.singer = singer;
 	}
 
 	public String getPrice() {
-		System.out.println("getPrice");
+		//System.out.println("getPrice");
 		return price;
 	}
 
 	public void setPrice(String price) {
-		System.out.println("setPrice");
+		//System.out.println("setPrice");
 		this.price = price;
 	}
 
 	public String getDay() {
-		System.out.println("getDay");
+		//System.out.println("getDay");
 		return day;
 	}
 
 	public void setDay(String day) {
-		System.out.println("setDay");
+		//System.out.println("setDay");
 		this.day = day;
 	}
 
