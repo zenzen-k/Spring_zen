@@ -1,0 +1,50 @@
+drop table travel;
+create table travel(
+	num number primary key,
+	name varchar2(10),
+	age number,
+	area varchar2(30),
+	style varchar2(15),
+	price varchar2(10)
+);
+
+drop sequence travel_seq;
+create sequence travel_seq 
+minvalue 1
+start with 1
+nocache;
+
+
+insert into travel
+values(travel_seq.nextval, '수지',21, '동남아','패키지','200~300');
+
+commit;
+
+col num for 99
+col age for 999
+col name for a6
+col area for a25
+col style for a10
+col price for a10
+select * from travel;
+
+
+[작업순서]
+1. pom.xml : dependency 4개 추가함(유효성, DB, MyBatis, dbcp)
+2. web.xml : 한글처리, root-context.xml (실행)
+3. root-context.xml : bean 3개 추가 (객체생성)
+4. 객체 생성에 따른 xml 파일 추가(SqlMapConfig.xml, mapper.xml)
+5. 각 두개 파일에 DOCTYPE 설정, mapper 태그/configuration 태그 추가
+6. web.xml 에 servlet 태그 생성 후 서블릿 파일 생성
+7. WEB-INF 폴더에 travel-servlet에 작성한대로 /WEB-INF/travel/ 폴더 생성 
+8. Bean 생성, Dao 생성()
+9. Dao 클래스 객체 생성해주는 어노테이션 (@Component) 작성
+	@Component("myTravelDao")
+10. Dao 클래스안에 mapper 화일의 namespace와 동일한 이름의 변수 설정
+	private String namespace = "travel.TravelBean";
+11. Dao 클래스 안에 아까 생성했던 객체 SqlSessionTemplate 주입 
+	@Autowired
+	SqlSessionTemplate sqlSessionTemplate;
+
+
+
