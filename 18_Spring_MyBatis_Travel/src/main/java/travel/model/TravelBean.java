@@ -14,7 +14,8 @@ public class TravelBean {
 	
 	private int num;
 	
-	@NotEmpty(message = "아이디는" + must_input)
+	@NotEmpty(message = "이름은 " + must_input)
+	@Size(max = 10, message = "이름은 10글자 이상 안됨")
 	private String name;
 	
 	@Range(min = 10, max = 100, message = "10 ~ 100살 작성해야 합니다.")

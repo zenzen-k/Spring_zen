@@ -31,7 +31,7 @@ travelDetailView.jsp<br>
 		</tr>
 		<tr>
 			<td align="center" colspan="2">
-				<a href="list.tv">목록보기</a>
+				<a href="list.tv?&pageNumber=${param.pageNumber}">목록보기</a>
 			</td>
 		</tr>
 	</table>

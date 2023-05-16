@@ -37,8 +37,18 @@
 		</if>
 	</select>
 	
-	<select id="GetDetailTrave" resultType="travel.model.TravelBean">
+	<select id="GetDetailTrave" resultType="MyTravel">
 		select * from travel where num = #{num}
 	</select>
+	
+	<update id="UpdateTravel">
+		update travel 
+		set name = #{name}, age = #{age}, area = #{area}, style = #{style}, price = #{price} 
+		where num = #{num}
+	</update>
+	
+	<delete id="DeleteTravel">
+		delete travel where num = #{num}
+	</delete>
 	
 </mapper>

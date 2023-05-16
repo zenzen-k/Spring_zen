@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="movie.MovieBean">
+	<!-- 전체목록불러오기 -->
+	<select id="GetMovieList" resultType="MyMovie"><!-- 별칭 설정햇음. movie.model.MovieBean -->
+		select * from movie
+		<if test="whatColumn == 'genre'">
+		where genre like #{keyword}
+		</if>
+		<if test="whatColumn == 'grade'">
+		where grade like #{keyword}
+		</if>
+		<if test="whatColumn == 'actor'">
+		where actor like #{keyword}
+		</if>
+		order by num desc
+	</select>
+	
+	<select id="GetTotalCount" resultType="int">
+		select count(*) from movie
+		<if test="whatColumn == 'genre'">
+		where genre like #{keyword}
+		</if>
+		<if test="whatColumn == 'grade'">
+		where grade like #{keyword}
+		</if>
+		<if test="whatColumn == 'actor'">
+		where actor like #{keyword}
+		</if>
+	</select>
+</mapper>

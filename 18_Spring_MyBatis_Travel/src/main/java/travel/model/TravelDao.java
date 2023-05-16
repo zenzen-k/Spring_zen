@@ -54,8 +54,29 @@ public class TravelDao {
 	}
 
 	public TravelBean getTravelByNum(int num) {
+		System.out.println("dao num : " + num);
 		TravelBean travel = sqlSessionTemplate.selectOne(namespace + ".GetDetailTrave", num);
 		return travel;
+	}
+
+	public int updateTravel(TravelBean travelBean) {
+		int cnt = -1;
+		try {
+			cnt = sqlSessionTemplate.update(namespace + ".UpdateTravel", travelBean);
+		}catch (DataAccessException e) { 
+			System.out.println("Dao updateTravel cnt : " + cnt);
+		}
+		return cnt;
+	}
+
+	public int deleteTravel(int num) {
+		int cnt = -1;
+		try {
+			cnt = sqlSessionTemplate.delete(namespace + ".DeleteTravel", num);
+		}catch (DataAccessException e) { 
+			System.out.println("Dao deleteTravel cnt : " + cnt);
+		}
+		return cnt;
 	}
 	
 }
