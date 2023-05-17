@@ -1,13 +1,24 @@
 package movie.model;
 
-public class MovieBean {
+import org.hibernate.validator.constraints.NotBlank;
 
+public class MovieBean {
+	
+	private final String errmsg = "필수 입력사항입니다.";
+	
 	private int num;
+	
+	@NotBlank(message = errmsg)
 	private String title;
+	@NotBlank(message = "대륙" + errmsg)
 	private String continent;
+	@NotBlank(message = "나라" + errmsg)
 	private String nation;
+	@NotBlank(message = "최소 1개 이상 선택하세요")
 	private String genre;
+	@NotBlank(message = errmsg)
 	private String grade;
+	@NotBlank(message = errmsg)
 	private String actor;
 
 	public MovieBean() {

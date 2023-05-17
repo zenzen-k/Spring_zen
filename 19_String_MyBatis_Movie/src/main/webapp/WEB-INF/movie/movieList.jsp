@@ -4,10 +4,10 @@
 
 <script>
 	function up(num, pageNumber) {
-		location.href="";
+		location.href="update.mv?num=" + num + "&pageNumber=" + pageNumber;
 	}
 	function del(num, pageNumber) {
-		location.href="";
+		location.href="delete.mv?num=" + num + "&pageNumber=" + pageNumber;
 	}
 </script>
 
@@ -56,7 +56,7 @@ movieList.jsp<br>
 	<c:forEach var="list" items="${list}">
 		<tr>
 			<td>${list.num}</td>
-			<td>${list.title}</td>
+			<td><a href='detail.mv?num=${list.num}&pageNumber=${pageInfo.pageNumber}'>${list.title}</a></td>
 			<td>${list.continent}</td>
 			<td>${list.nation}</td>
 			<td>${list.genre}</td>

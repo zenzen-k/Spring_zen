@@ -7,6 +7,7 @@ import java.util.Map;
 import org.apache.ibatis.session.RowBounds;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Component;
 
 import utility.Paging;
@@ -34,6 +35,40 @@ public class MovieDao {
 		System.out.println("count : " + count);
 		return count;
 	}
+
+	public int insertMovie(MovieBean movie) {
+		int cnt = -1;
+		try {
+			cnt = sqlSessionTemplate.insert(namespace + ".InsertMovie", movie);
+		} catch (DataAccessException e) {
+			System.out.println("DataAccessException");
+		}
+		System.out.println("Dao insertMovie cnt : " + cnt);
+		
+		return cnt;
+	}
 	
+	public boolean searchTitle(String title) {
+		int count = sqlSessionTemplate.selectOne(namespace + ".SearchTitle", title);
+		if(count == 0)
+			return false; // 존재안함
+		else
+			return true; // 이미 존재
+	}
+	
+	public MovieBean getOneMovie(int num) {
+		MovieBean movie = sqlSessionTemplate.selectOne(namespace + ".GetOneMovie", num);
+		return movie;
+	}
+
+	public int deleteMovie(int num) {
+		int cnt = -1;
+		try {
+			cnt = sqlSessionTemplate.delete(namespace + ".DeleteMovie", num);
+		}catch (DataAccessException e) {
+			System.out.println("삭제실패 : " + cnt);
+		}
+		return cnt;
+	}
 	
 }
