@@ -138,8 +138,7 @@ String[] gradeArr = { "19", "15", "12", "7" };
 
 <body onload="init(form)">
 	<h2>영화 정보 등록 화면</h2>
-	<form:form commandName="movie" action="insert.mv" method="post"
-		name="form">
+	<form:form commandName="movie" action="insert.mv" method="post" name="form">
 		<label>영화 제목 :</label>
 		<input type="text" name="title" value="${movie.title}">
 		<input type="button" value="중복체크" id="title_check">
@@ -166,16 +165,16 @@ String[] gradeArr = { "19", "15", "12", "7" };
 		<label>장르 :</label>
 		<c:forEach var="genre" items="<%=genreArr%>">
 			<input type="checkbox" name="genre" value="${genre}"
-				<c:if test="${fn:contains(movie.genre, genre)}">checked</c:if>>${genre}
-	</c:forEach>
+			<c:if test="${fn:contains(movie.genre, genre)}">checked</c:if>>${genre}
+		</c:forEach>
 		<form:errors cssClass="err" path="genre" />
 		<br>
 
 		<label>등급 :</label>
 		<c:forEach var="grade" items="<%=gradeArr%>">
 			<input type="radio" name="grade" value="${grade}"
-				<c:if test="${fn:contains(movie.grade, grade)}">checked</c:if>>${grade}
-	</c:forEach>
+			<c:if test="${fn:contains(movie.grade, grade)}">checked</c:if>>${grade}
+		</c:forEach>
 		<form:errors cssClass="err" path="grade" />
 		<br>
 

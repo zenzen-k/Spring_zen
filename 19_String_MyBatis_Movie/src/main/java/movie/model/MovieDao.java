@@ -70,5 +70,15 @@ public class MovieDao {
 		}
 		return cnt;
 	}
+
+	public int updateMovie(MovieBean movie) {
+		int cnt = -1;
+		try {
+			cnt = sqlSessionTemplate.update(namespace + ".UpdateMovie", movie);
+		} catch (DataAccessException e) {
+			System.out.println("수정실패 : " + cnt);
+		}
+		return cnt;
+	}
 	
 }
