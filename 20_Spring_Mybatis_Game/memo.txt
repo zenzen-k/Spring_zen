@@ -1,0 +1,27 @@
+drop table game;
+create table game(
+	num number primary key, -- 번호
+	title varchar2(30), -- 이름
+	company varchar2(30), -- 개발회사
+	device varchar2(10), -- 기기 (select) / pc, console, all
+	platform varchar2(100), -- 플랫폼(select)
+	genre varchar2(30), -- 장르(checkbox)
+	grade varchar2(10), -- 연령제한(radio)
+	price varchar2(10) -- 가격(0이면 무료, 아니면 금액작성)
+);
+
+
+drop sequence game_seq;
+create sequence game_seq 
+minvalue 1
+start with 1
+nocache;
+
+insert into game values(game_seq.nextval, '오버워치', '블리자드', 'pc', '윈도우','슈팅','12세','0');
+insert into game values(game_seq.nextval, '리그오브레전드', '라이엇게임즈', 'pc' , 'maxOS','AOS','12세','0');
+insert into game values(game_seq.nextval, '젤다의전설', 'Nintendo', 'console' , 'PS4','액션,어드벤처','전체','74800');
+insert into game values(game_seq.nextval, '슈퍼마리오', 'Nintendo', 'console' , 'Nintendo','액션','전체','61500');
+
+commit;
+
+select * from game;
