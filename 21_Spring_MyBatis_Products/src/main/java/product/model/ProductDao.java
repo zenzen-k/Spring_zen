@@ -34,11 +34,12 @@ public class ProductDao {
 
 	public int insertProduct(ProductBean product) {
 		int cnt = -1;
-		try {
-			cnt = sqlSessionTemplate.insert(namespace + ".InsertProduct", product);
-		}catch (DataAccessException e) {
-			System.out.println("insert fail");
-		}
+		cnt = sqlSessionTemplate.insert(namespace + ".InsertProduct", product);
+//		try {
+//			cnt = sqlSessionTemplate.insert(namespace + ".InsertProduct", product);
+//		}catch (DataAccessException e) {
+//			System.out.println("insert fail");
+//		}
 		return cnt;
 	}
 	

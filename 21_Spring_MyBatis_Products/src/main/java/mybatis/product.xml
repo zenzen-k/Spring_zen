@@ -27,8 +27,8 @@
 	</select>
 	
 	<insert id="InsertProduct">
-		insert into products
-		values(seqprod.nextval, #{name}, #{company}, #{image}, #{stock}, #{price}, #{category}, #{contents}, #{point}, #{inputdate})
+		insert into products(num, name, company, image, stock, price, contents, point, inputdate)
+		values(seqprod.nextval, #{name}, #{company}, #{image}, #{stock}, #{price}, #{contents}, #{point}, #{inputdate})   
 	</insert>
 </mapper>
   

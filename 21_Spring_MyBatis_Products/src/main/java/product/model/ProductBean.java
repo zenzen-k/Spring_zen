@@ -5,26 +5,30 @@ import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.web.multipart.MultipartFile;
 
 public class ProductBean {
 	private int num;
-	
+
 	@Size(min = 3, max = 10, message = "3~10 자리 입력")
 	private String name;
 	private String company;
-	
+
 	@NotEmpty(message = "파일 선택 필수")
 	private String image;
 	private int stock;
-	
+
 	@Min(value = 3000, message = "최소 3000원 이상 입력")
 	private int price;
 	private String category;
-	
+
 	@Length(min = 3, max = 10, message = "3~10 자리 입력")
 	private String contents;
 	private int point;
 	private String inputdate;
+	
+	// 파일을 담을 임시 변수
+	private MultipartFile upload;
 
 	public ProductBean() {
 		super();
@@ -43,6 +47,25 @@ public class ProductBean {
 		this.contents = contents;
 		this.point = point;
 		this.inputdate = inputdate;
+	}
+
+	public MultipartFile getUpload() {
+		return upload;
+	}
+
+	public void setUpload(MultipartFile upload) {
+		System.out.println("setUpload");
+		this.upload = upload;
+		
+		System.out.println("upload : " + upload); // upload에는 내가 선택한 화일의 정보가 들어간다.
+		
+		// 파일의 오리지널 이름을 가져온다.
+		String fileName = upload.getOriginalFilename();
+		System.out.println("fileName : " + fileName);
+		
+		// this 안붙여도 ㄱㅊ지만 멤버변수 확실히 하기 위해서!
+		// 파일명을 image 변수에 넣는다
+		this.image = fileName;
 	}
 
 	public int getNum() {
