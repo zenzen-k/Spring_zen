@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-config.dtd">
+  
+<configuration>
+	<!-- 별칭 -->
+	<typeAliases>
+		<typeAlias type="product.model.ProductBean" alias="MyProd"/>
+	</typeAliases>
+	
+	<!-- 아까 root mapper 화일의 위치를 작성하지 못해슨데 그걸 여기에 작성한다 -->
+	<mappers>
+		<mapper resource="mybatis/member.xml"/>
+		<mapper resource="mybatis/product.xml"/>
+		<mapper resource="mybatis/order.xml"/>
+		<mapper resource="mybatis/orderdetail.xml"/>
+		<mapper resource="mybatis/composite.xml"/> <!-- join -->
+	</mappers>
+	
+</configuration>

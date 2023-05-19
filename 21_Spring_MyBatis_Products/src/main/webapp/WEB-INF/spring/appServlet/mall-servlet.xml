@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.1.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd">
+
+	<!-- 유효성검사할때 필요하당 -->
+	<mvc:annotation-driven/> 
+	
+	<!-- view의 위치 -->
+	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/mall/"></property>
+		<property name="suffix" value=".jsp"></property>
+	</bean>
+	
+	<!-- 주문, 결제할때 *.mall 요청을 할것 
+		상품의 재고수량 등의 처리와 주문자 정보, 주문정보 등등의 여러가지 봐야할 패키지가 많음 -->
+	<context:component-scan base-package="product"/>
+	<context:component-scan base-package="member"/>
+	<context:component-scan base-package="order"/>
+	<context:component-scan base-package="orderdetail"/>
+	<context:component-scan base-package="mall"/>
+	
+</beans>
+
+<!-- mall-servlet.xml -->
