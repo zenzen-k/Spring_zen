@@ -42,5 +42,16 @@ public class ProductDao {
 //		}
 		return cnt;
 	}
+
+	public ProductBean getOneProduct(int num) {
+		ProductBean product = sqlSessionTemplate.selectOne(namespace + ".GetOneProduct", num);
+		return product;
+	}
+
+	public int deleteProduct(int num) {
+		int cnt = -1;
+		cnt = sqlSessionTemplate.delete(namespace + ".DeleteProduct", num);
+		return cnt;
+	}
 	
 }

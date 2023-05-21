@@ -30,5 +30,13 @@
 		insert into products(num, name, company, image, stock, price, contents, point, inputdate)
 		values(seqprod.nextval, #{name}, #{company}, #{image}, #{stock}, #{price}, #{contents}, #{point}, #{inputdate})   
 	</insert>
+	
+	<select id="GetOneProduct" resultType="MyProd">
+		select * from products where num = #{num}
+	</select>
+	
+	<delete id="DeleteProduct">
+		delete products where num = #{num}
+	</delete>
 </mapper>
   
