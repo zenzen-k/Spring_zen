@@ -2,6 +2,12 @@
     pageEncoding="UTF-8"%>
 <%@ include file="../common/common.jsp" %>
 
+<%
+// 자동생성됨
+//HttpSession session = new HttpSession();
+//session.getAttribute("name");
+%>
+
 <h2 align="center">상품 리스트 화면<br>
 productList.jsp</h2>
 

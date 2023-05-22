@@ -4,7 +4,7 @@ import java.io.File;
 import java.io.IOException;
 
 import javax.servlet.ServletContext;
-import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +13,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -34,9 +33,19 @@ public class ProductInsertContoller {
 	@Autowired
 	ServletContext servletContext;
 	
+	// 상품목록보기 -> 추가 클릭(로그인 정보 확인해야함)
 	@RequestMapping(value = command, method = RequestMethod.GET)
-	public String doAction() {
-		return getPage;
+	public String doAction(HttpSession session) { // 로그인을 위한 session 매개변수
+		
+		// 어디선가 로그인을 하면 로그인한 정보를 session(loginInfo)으로 설정함.
+		System.out.println(session.getAttribute("loginInfo"));
+		// 로그인 정보가 없다면 null 값이 나옴
+		if(session.getAttribute("loginInfo") == null) { // 로그인 X
+			return "redirect:/loginForm.mb"; 
+			// MemberLoginContoller ->  memberLoginForm.jsp로 이동할것!. 
+		}else { // 로그인 O
+			return getPage;
+		}
 	}
 	
 	
@@ -85,7 +94,6 @@ public class ProductInsertContoller {
 				mav.setViewName(getPage);
 			}
 		}
-		
 		return mav;
 	}
 }

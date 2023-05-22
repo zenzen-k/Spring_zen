@@ -53,5 +53,11 @@ public class ProductDao {
 		cnt = sqlSessionTemplate.delete(namespace + ".DeleteProduct", num);
 		return cnt;
 	}
+
+	public int updateProduct(ProductBean product) {
+		int cnt = -1;
+		cnt = sqlSessionTemplate.update(namespace + ".UpdateProduct", product);
+		return cnt;
+	}
 	
 }

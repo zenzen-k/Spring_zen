@@ -29,6 +29,7 @@ public class ProductBean {
 	
 	// 파일을 담을 임시 변수
 	private MultipartFile upload;
+	private String upload2;
 
 	public ProductBean() {
 		super();
@@ -47,6 +48,14 @@ public class ProductBean {
 		this.contents = contents;
 		this.point = point;
 		this.inputdate = inputdate;
+	}
+	
+	public String getUpload2() {
+		return upload2;
+	}
+
+	public void setUpload2(String upload2) {
+		this.upload2 = upload2;
 	}
 
 	public MultipartFile getUpload() {
