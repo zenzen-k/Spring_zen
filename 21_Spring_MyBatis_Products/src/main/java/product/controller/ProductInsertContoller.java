@@ -9,6 +9,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.FileCopyUtils;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -41,6 +42,10 @@ public class ProductInsertContoller {
 		System.out.println(session.getAttribute("loginInfo"));
 		// 로그인 정보가 없다면 null 값이 나옴
 		if(session.getAttribute("loginInfo") == null) { // 로그인 X
+			
+			// 한번 설정한 정보를 계속 쓰기 위해서!
+			session.setAttribute("destination", "redirect:/insert.prd");
+			
 			return "redirect:/loginForm.mb"; 
 			// MemberLoginContoller ->  memberLoginForm.jsp로 이동할것!. 
 		}else { // 로그인 O
@@ -49,6 +54,7 @@ public class ProductInsertContoller {
 	}
 	
 	
+	// 상품추가 폼에서 넘어왔음
 	@RequestMapping(value = command, method = RequestMethod.POST)
 	public ModelAndView doAction(@ModelAttribute("product") @Valid ProductBean product,	BindingResult result){
 		
@@ -66,9 +72,16 @@ public class ProductInsertContoller {
 		// File destination = new File(uploadPath + "/" + product.getImage());
 		// File.separator : 역슬래시 추가
 		
+		
 		// 자동으로 만들어지는 객체는 아님,,,
 		// Bean의 getUpload를 보면 MultipartFile 객체를 리턴하는 것을 볼 수 있당. 따라서 아래처럼 객체 생성
 		MultipartFile multi = product.getUpload();
+		
+		// 아래 폴더 밑에 올릴 준비를 햇음!
+		String str = "c:/tempUpload";
+		File destination_local = new File(str + File.separator + multi.getOriginalFilename());
+		
+		
 		
 		if(result.hasErrors()) {
 			System.out.println("유효성 검사 실패");
@@ -81,7 +94,9 @@ public class ProductInsertContoller {
 				// destination 위치에 파일을 올리게 되낟!!!!! 
 				// IOException 예외 발생함
 				try {
-					multi.transferTo(destination);
+					multi.transferTo(destination); // destination : 웹서버폴더
+					FileCopyUtils.copy(destination, destination_local); // 웹서버폴더의 값을 로컬로 옮김
+					// 반대로 로컬의 값을 웹서버에 복사도 가능하다.
 				} catch (IllegalStateException e) {
 					e.printStackTrace();
 				} catch (IOException e) {

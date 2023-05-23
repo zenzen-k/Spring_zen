@@ -20,7 +20,7 @@
 <center>
 productDetail.jsp<br>
 
-<h2>상품 상세 화면(<%=request.getContextPath() %>)</h2>
+<h2>상품 상세 화면(${product.num})</h2>
 <!-- C:\Users\user\Downloads\spring-tool-suite-3.9.17.RELEASE\sts-bundle\pivotal-tc-server\instances\Spring3\wtpwebapps\20_Spring_MyBatis_Products -->
 <table border="1">
 	<tr>
@@ -45,9 +45,13 @@ productDetail.jsp<br>
 	<tr>
 		<th>주문 수량</th>
 		<td>
-			주문 수량
-			<input type="text" name="">
-			<input type="button" value="주문">
+			<!-- mall.controller.CartAddController 주문 -->
+			<form action="add.mall" method="post">
+				<input type="hidden" name="pageNumber" value="${param.pageNumber}">
+				<input type="hidden" name="num" value="${product.num}">
+				주문수량 : <input type="text" name="orderqty">
+				<input type="submit" value="주문">
+			</form>
 		</td>
 	</tr>
 	<tr>

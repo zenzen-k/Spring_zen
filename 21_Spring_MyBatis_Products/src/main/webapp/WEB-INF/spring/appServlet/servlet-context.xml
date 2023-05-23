@@ -23,6 +23,7 @@
 	
 	<context:component-scan base-package="com.spring.ex" />
 	
-	
-	
+	<!-- 서버구동시  -->
+	<beans:bean id="myBean" class="com.spring.ex.MyBean" init-method="init">
+	</beans:bean>
 </beans:beans>

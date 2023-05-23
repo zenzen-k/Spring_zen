@@ -6,6 +6,7 @@
 		location.href='registerForm.mb';
 	}
 	function update(id, pageNumber) {
+		// alert(id + "," +pageNumber);
 		location.href='update.mb?id=' + id + "&pageNumber=" + pageNumber;
 	}
 </script>

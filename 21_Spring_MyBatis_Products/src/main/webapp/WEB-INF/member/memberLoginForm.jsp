@@ -15,7 +15,7 @@
 
 member\memberLoginForm<br>
 
-<form action="" method="post">
+<form action="loginForm.mb" method="post">
 	<table border="1">
 		<tr>
 			<td>아이디</td>

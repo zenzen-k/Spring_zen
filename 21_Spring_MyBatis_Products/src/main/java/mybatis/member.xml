@@ -45,5 +45,6 @@
 		set password = #{password}, name = #{name}, gender = #{gender}, hobby = #{hobby}, address1 = #{address1}, address2 = #{address2}
 		where id = #{id}
 	</update>
+	
 </mapper>
   

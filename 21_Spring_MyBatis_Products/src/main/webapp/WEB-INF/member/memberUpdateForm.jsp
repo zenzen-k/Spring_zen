@@ -24,8 +24,9 @@
 				<th>아이디</th>
 				<td>
 					<%-- <input type="text" name="id" value="${member.id}" disabled> 
-					-> disabled로 하니까 유효성검사 걸림;;
+					-> disabled는 submit 불가넝
 					--%>
+					<%-- <input type="text" name="id" value="${member.id}" readonly>  --%>
 					${member.id}
 				</td>
 			</tr>

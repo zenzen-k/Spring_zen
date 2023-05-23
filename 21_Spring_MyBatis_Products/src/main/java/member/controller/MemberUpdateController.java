@@ -23,6 +23,7 @@ public class MemberUpdateController {
 	@Autowired
 	MemberDao memberDao;
 	
+	// memberList.jsp 에서 id, pageNumber 로 받음
 	@RequestMapping(value = command, method = RequestMethod.GET)
 	public ModelAndView doAction(
 			@RequestParam("id") String id,
@@ -31,10 +32,12 @@ public class MemberUpdateController {
 		ModelAndView mav = new ModelAndView();
 		MemberBean member = memberDao.getOneMember(id);
 		mav.addObject("member", member);
+		mav.addObject("pageNumber", pageNumber);
 		mav.setViewName(getPage);
 		return mav;
 	}
 	
+	// memberUpdateForm.jsp 에서 넘어옴
 	@RequestMapping(value = command, method = RequestMethod.POST)
 	public ModelAndView doAction(
 			@RequestParam("pageNumber") String pageNumber,
@@ -42,6 +45,7 @@ public class MemberUpdateController {
 			BindingResult result) {
 		
 		ModelAndView mav = new ModelAndView();
+		mav.addObject("pageNumber", pageNumber);
 		
 		if(result.hasErrors()) {
 			mav.setViewName(getPage);
