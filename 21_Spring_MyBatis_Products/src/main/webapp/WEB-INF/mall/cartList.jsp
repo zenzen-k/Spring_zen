@@ -27,9 +27,11 @@ CartListController -> cartList.jsp<br>
 				<td align="center">${shopInfo.pname}</td>
 				<td align="center">${shopInfo.qty}</td>
 				<td align="right">
+					<%-- ${shopInfo.price} --%>
 					<fmt:formatNumber value="${shopInfo.price}" pattern="###,###"/>
 				</td>
 				<td align="right">
+					<%-- ${shopInfo.amount} --%>
 					<fmt:formatNumber value="${shopInfo.amount}" pattern="###,###"/>
 				</td>
 			</tr>
@@ -37,7 +39,7 @@ CartListController -> cartList.jsp<br>
 		
 		<tr>
 			<td colspan="3" align="center">
-				<a href="">결제하기</a>
+				<a href="calculate.mall">결제하기</a> <!-- CartCalculateController -->
 				<a href="list.prd">추가주문</a>
 			</td>
 			<td colspan="2" align="center">

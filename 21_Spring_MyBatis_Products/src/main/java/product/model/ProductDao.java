@@ -59,5 +59,19 @@ public class ProductDao {
 		cnt = sqlSessionTemplate.update(namespace + ".UpdateProduct", product);
 		return cnt;
 	}
+
+//	public void stockUpdate(Map<String, Integer> pmap) {
+//		sqlSessionTemplate.update(namespace + ".StockUpdate", pmap);
+//		
+//	}
+
+	public int stockUpdate(int pnum, int qty) {
+		int cnt = -1;
+		ProductBean pb = new ProductBean();
+		pb.setNum(pnum); // 상품번호
+		pb.setStock(qty); // 주문수량
+		cnt = sqlSessionTemplate.update(namespace + ".StockUpdate", pb);
+		return cnt;
+	}
 	
 }

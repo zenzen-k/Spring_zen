@@ -57,4 +57,13 @@ public class MemberDao {
 		return 0;
 	}
 
+	public int updatePoint(String id, int point) {
+		int cnt = -1;
+		MemberBean mb = new MemberBean();
+		mb.setId(id);
+		mb.setMpoint(point);
+		cnt = sqlSessionTemplate.update(namespace + ".UpdatePoint", mb);
+		return cnt;
+	}
+
 }

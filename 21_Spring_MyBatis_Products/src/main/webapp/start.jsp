@@ -11,6 +11,8 @@ start.jsp<br>
 	// 즉 위처럼 작성하고자 할때에는 / 필수~! 즉 ex/ 가아닌 ex 까지만 가져옴 
 
 	String viewMember = "list.mb";
+	String viewOrder = "order.mall";
 %>
 <a href="<%=viewProduct%>">상품 목록 보기</a><br><br>
 <a href="<%=viewMember%>">회원 목록 보기</a><br><br>
+<a href="<%=viewOrder%>">나의 주문 내역</a><br><br>
