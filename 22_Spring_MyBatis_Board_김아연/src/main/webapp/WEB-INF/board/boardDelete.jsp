@@ -29,7 +29,7 @@
 </style>
 
 <b>글삭제</b>
-<form:form commandName="boardBean" action="delete.br" method="post">
+<form action="delete.br" method="post">
 <input type="hidden" name="num" value="${param.num}">
 <input type="hidden" name="pageNumber" value="${param.pageNumber}">
 <table>
@@ -40,7 +40,6 @@
 	<tr>
 		<td>
 			비밀번호 : <input type="password" name="passwd" size="10">
-			<form:errors cssClass="err" path="passwd"/>	
 		</td>
 	</tr>
 	
@@ -51,4 +50,4 @@
 		</td>
 	</tr>
 </table>
-</form:form>
+</form>

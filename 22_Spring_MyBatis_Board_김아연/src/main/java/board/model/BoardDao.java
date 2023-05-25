@@ -53,7 +53,7 @@ public class BoardDao {
 	public int deleteBoard(int num) {
 		int cnt = -1;
 		cnt = sqlSessionTemplate.delete(namespace + ".DeleteBoard", num);
-		return 0;
+		return cnt;
 	}
 
 	public int replyUpdateBoard(BoardBean board) {
