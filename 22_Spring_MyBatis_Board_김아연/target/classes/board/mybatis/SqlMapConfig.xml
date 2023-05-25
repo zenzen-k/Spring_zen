@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+	<settings>
+		<setting name="mapUnderscoreToCamelCase" value="true"/><!-- 안쓰면 기본값이 false -->
+	</settings>
+
+	<typeAliases>
+		<typeAlias type="board.model.BoardBean" alias="MyBoard"/>
+	</typeAliases>
+</configuration>
+
+<!-- 
+re_step -> restep(setRestep,getRestep)
+밑줄이 생기면 문제가 발생해서 bean에 밑줄없는 변수와 매핑하기 위해서 위의 mapUnderscoreToCamelCase 설정이 필요하다
+즉, 밑줄빼고 낙타의 등과 같은 코드를 작성하라는 의미다.
+ -->
